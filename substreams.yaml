@@ -1,0 +1,41 @@
+specVersion: v0.1.0
+
+package:
+  name: solanatransferextractor
+  version: v0.1.0
+  url: https://github.com/username/solanatransferextractor-solana-mainnet-beta
+  description: Substreams module for extracting Solana transfers
+
+imports:
+  solana: https://spkg.io/streamingfast/solana-common-v0.4.0.spkg
+
+protobuf:
+  files:
+    - mydata.proto
+  importPaths:
+    - ./proto
+  excludePaths:
+    - sf/substreams/rpc
+    - sf/substreams/v1
+    - sf/substreams/sink
+    - sf/substreams/index
+    - sf/substreams/index/v1
+    - instructions.proto
+    - transactions.proto
+    - google
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/substreams.wasm
+
+modules:
+  - name: map_my_data
+    kind: map
+    initialBlock: 385870151
+    inputs:
+      - map: solana:blocks_without_votes
+    output:
+      type: proto:mydata.v1.MyData
+
+network: solana-mainnet-beta

@@ -1,0 +1,10 @@
+TraceID: a2732f2824475d676feeea3b1418ca08
+This request will be processed in a single stage
+Blocks to process in requested range: 6 (0 already cached)
+
+📊 Usage Report
+ • Egress Bytes (uncompressed): 151.0 KiB
+ • Processed Blocks: 6 blocks
+ • Received Blocks: 6 blocks
+
+Completed successfully
